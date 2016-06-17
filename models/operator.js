@@ -5,16 +5,11 @@ module.exports = (models) => {
     [this.symb, this.name, this.fn] = [symb, name, fn];
   }
 
-  Operator.all = [
-      new Operator('+', 'add', (a, b) => a + b),
-      new Operator('-', 'add', (a, b) => a - b),
-      new Operator('*', 'add', (a, b) => a * b),
-      new Operator('/', 'add', (a, b) => a / b)
-    ]
-
-  models.operators = {};
-  Operator.all.forEach((op) => {
-    models.operators[op.symb] = op;
-  });
+  models.operators = {
+      '+': new Operator('+', 'add', (a, b) => a + b),
+      '-': new Operator('-', 'sub', (a, b) => a - b),
+      '*': new Operator('*', 'mult', (a, b) => a * b),
+      '/': new Operator('/', 'div', (a, b) => a / b)
+    }
 
 }
