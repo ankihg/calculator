@@ -2,15 +2,16 @@
 const express = require('express'),
   app = express(),
   config = require(__dirname+'/config'),
-  models = require(__dirname+'/models'),
-  routes = require(__dirname+'/routes');
+  modelsInjector = require(__dirname+'/models'),
+  routesInjector = require(__dirname+'/routes');
 
 app.use(require('body-parser').json());
 app.use(require('morgan')());
 
 //server
-const apiRouter = express.Router();
-routes(apiRouter, models);
+const apiRouter = express.Router(),
+  models = {};
+routesInjector(apiRouter, modelsInjector(models));
 app.use(apiRouter);
 
 //listen
