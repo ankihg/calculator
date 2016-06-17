@@ -3,8 +3,6 @@ const expect = require('chai').expect;
 
 describe('calculation model unit testing', () => {
 
-  console.log('require models');
-  console.log(__dirname+'/../models');
   const models = {};
   require(__dirname+'/../models')(models);
 
@@ -12,11 +10,20 @@ describe('calculation model unit testing', () => {
     Calculation = models.Calculation;
 
   it('add 5 and 3', () => {
-    console.log(operators['+']);
+    expect(new Calculation(operators['+'], 5, 3).apply()).eql(8);
   })
 
+  it('sub 5 and 3', () => {
+    expect(new Calculation(operators['-'], 5, 3).apply()).eql(2);
+  })
 
+  it('mult 5 and 3', () => {
+    expect(new Calculation(operators['*'], 5, 3).apply()).eql(15);
+  })
 
+  it('divide 6 and 3', () => {
+    expect(new Calculation(operators['/'], 6, 3).apply()).eql(2);
+  })
 
 
 })

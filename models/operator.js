@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (models) => {
 
-  const Operator = new function(symb, name, fn) {
+  const Operator = function(symb, name, fn) {
     [this.symb, this.name, this.fn] = [symb, name, fn];
   }
 
@@ -16,7 +16,5 @@ module.exports = (models) => {
   Operator.all.forEach((op) => {
     models.operators[op.symb] = op;
   });
-
-  console.log(models.operators);
 
 }
