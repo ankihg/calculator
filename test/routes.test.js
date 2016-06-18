@@ -1,10 +1,9 @@
 'use strict';
 const chai = require('chai'),
   config = require(__dirname+'/../config');
-chai.use(require('chai-http'));
 
-const expect = chai.expect,
-  request = chai.request;
+chai.use(require('chai-http'));
+const {expect, request} = chai;
 
 describe('routes testing', () => {
 
