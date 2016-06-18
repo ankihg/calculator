@@ -6,7 +6,12 @@ module.exports = (app) => {
 
     vm.plz = 'lets do some math !!';
     vm.operators = null;
-    vm.operator;
+
+    var equation = {
+      operator: null,
+      operand1: null,
+      operand2: null
+    }
 
     vm.init = function() {
       CalcService.getOperators((operators) => {

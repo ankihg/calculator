@@ -66878,7 +66878,12 @@
 
 	    vm.plz = 'lets do some math !!';
 	    vm.operators = null;
-	    vm.operator;
+
+	    var equation = {
+	      operator: null,
+	      operand1: null,
+	      operand2: null
+	    }
 
 	    vm.init = function() {
 	      CalcService.getOperators((operators) => {
@@ -66899,6 +66904,7 @@
 
 	module.exports = (app) => {
 	  __webpack_require__(14)(app);
+	  __webpack_require__(15)(app);
 	}
 
 
@@ -66911,9 +66917,26 @@
 	    return {
 	      restrict: 'E',
 	      replace: true,
-	      templateUrl: './directives/templates/operators-select.html',
-	      controller: 'CalcController',
-	      controllerAs: 'calcCtrl'
+	      templateUrl: './directives/templates/operators-select.html'
+	      // controller: 'CalcController',
+	      // controllerAs: 'calcCtrl'
+	    }
+	  })
+	}
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	module.exports = (app) => {
+	  app.directive('equationInput', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/equation-input.html'
+	      // controller: 'CalcController',
+	      // controllerAs: 'calcCtrl'
 	    }
 	  })
 	}

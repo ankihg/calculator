@@ -1,9 +1,9 @@
 module.exports = (app) => {
-  app.directive('operatorsSelect', function() {
+  app.directive('equationInput', function() {
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: './directives/templates/operators-select.html'
+      templateUrl: './directives/templates/equation-input.html'
       // controller: 'CalcController',
       // controllerAs: 'calcCtrl'
     }
