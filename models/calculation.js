@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (models) => {
 
-  const Calculation = models.Calculation = function(operator, operand1, operand2) {
-    [this.operator, this.operand1, this.operand2] = [operator, operand1, operand2];
+  const Calculation = models.Calculation = function(tmp) {
+    for (let key in tmp) { this[key] = tmp[key] }
   }
 
   Calculation.prototype.apply = function() {

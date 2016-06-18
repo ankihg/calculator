@@ -8,7 +8,7 @@ const expect = chai.expect,
 
 describe('routes testing', () => {
 
-  require(__dirname+'/../server');
+  // require(__dirname+'/../server');
   const server = 'localhost:'+config.PORT;
 
   describe('operators routes testing', () => {
@@ -29,6 +29,49 @@ describe('routes testing', () => {
           done();
         })
     })
+
+  })
+
+  describe('calculate routes testing', () => {
+
+    const path = '/calculate';
+
+    it('post calculate 3 + 2', (done) => {
+      request(server)
+        .post(path)
+        .send({"operator": "+", "operand1": 3, "operand2": 2})
+        .end((err, res) => {
+          expect(err).eql(null);
+          expect(res.body.msg).eql('3 + 2 calculated');
+          expect(res.body.data).eql(5);
+          done();
+        })
+    })
+
+    it('post calculate 4 - 7', (done) => {
+      request(server)
+        .post(path)
+        .send({"operator": "-", "operand1": 4, "operand2": 7})
+        .end((err, res) => {
+          expect(err).eql(null);
+          expect(res.body.msg).eql('4 - 7 calculated');
+          expect(res.body.data).eql(-3);
+          done();
+        })
+    })
+
+    it('post calculate 4 * 7', (done) => {
+      request(server)
+        .post(path)
+        .send({"operator": "*", "operand1": 4, "operand2": 7})
+        .end((err, res) => {
+          expect(err).eql(null);
+          expect(res.body.msg).eql('4 * 7 calculated');
+          expect(res.body.data).eql(28);
+          done();
+        })
+    })
+
 
   })
 

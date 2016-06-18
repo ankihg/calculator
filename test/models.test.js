@@ -43,19 +43,19 @@ describe('models unit testing', () => {
 
   describe('Calculation model testing', () => {
     it('5 + 3 = 8', () => {
-      expect(new Calculation(operators['+'], 5, 3).apply()).eql(8);
+      expect(new Calculation({operator: operators['+'], operand1: 5, operand2:3}).apply()).eql(8);
     })
 
-    it('2 - 7 = -5', () => {
-      expect(new Calculation(operators['-'], 2, 7).apply()).eql(-5);
+    it('2 - 7.3 = -5.3', () => {
+      expect(new Calculation({operator: operators['-'], operand1: 2, operand2:7.3}).apply()).eql(-5.3);
     })
 
     it('-7 * 5 = -35', () => {
-      expect(new Calculation(operators['*'], -7, 5).apply()).eql(-35);
+      expect(new Calculation({operator: operators['*'], operand1: -7, operand2:5}).apply()).eql(-35);
     })
 
     it('6 / 3 = 2', () => {
-      expect(new Calculation(operators['/'], 6, 3).apply()).eql(2);
+      expect(new Calculation({operator: operators['/'], operand1: 6, operand2:3}).apply()).eql(2);
     })
   })
 
