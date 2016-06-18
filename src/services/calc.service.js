@@ -5,7 +5,13 @@ module.exports = (app) => {
     this.getOperators = function(next) {
       $http.get('/operators')
         .then(res => next(res.data.data))
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
+    }
+
+    this.postCalcuation = function(equation, next) {
+      $http.post('/calculate', equation)
+        .then(res => next(res.data.data))
+        .catch(err => console.log(err));
     }
 
     return this;

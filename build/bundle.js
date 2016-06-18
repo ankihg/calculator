@@ -66848,7 +66848,13 @@
 	    this.getOperators = function(next) {
 	      $http.get('/operators')
 	        .then(res => next(res.data.data))
-	        .catch(err => console.log(err))
+	        .catch(err => console.log(err));
+	    }
+
+	    this.postCalcuation = function(equation, next) {
+	      $http.post('/calculate', equation)
+	        .then(res => next(res.data.data))
+	        .catch(err => console.log(err));
 	    }
 
 	    return this;
@@ -66879,7 +66885,7 @@
 	    vm.plz = 'lets do some math !!';
 	    vm.operators = null;
 
-	    var equation = {
+	    vm.equation = {
 	      operator: null,
 	      operand1: null,
 	      operand2: null
@@ -66890,6 +66896,13 @@
 	        this.operators = operators;
 	        console.log(this.operators);
 	      });
+	    }
+
+	    vm.calculate = function() {
+	      console.log(vm.equation);
+	      CalcService.postCalcuation(vm.equation, (res) => {
+	        console.log(res);
+	      })
 	    }
 
 	    return vm;
