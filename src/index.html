@@ -6,13 +6,15 @@
     <h1>plz respond</h1>
     <h5>welcome to the frontend</h5>
 
-      <main data-ng-controller="CalcController as calcCtrl" data-ng-init="calcCtrl.init()">
+      <main data-ng-view data-ng-controller="CalcController as calcCtrl">
 
         <h1>{{calcCtrl.plz}}</h1>
 
-        <ul>
+        <!-- <ul>
           <li data-ng-repeat="operator in calcCtrl.operators">{{operator.name}}</li>
-        </ul>
+        </ul> -->
+
+        <operators-select />
 
       </main>
 

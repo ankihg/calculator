@@ -1,0 +1,21 @@
+<div data-ng-init="calcCtrl.init()">
+
+  <select data-ng-model="calcCtrl.operator">
+    <option data-ng-repeat="(symb, operator) in calcCtrl.operators" value="{{operator.symb}}">
+      ({{operator.symb}}) {{operator.name}}
+    </option>
+  </select>
+
+  <!-- <md-backdrop>
+    <md-content>
+      <md-input-container class="md-block" flex-gt-xs data-ng-init="calcCtrl.init()">
+        <label layout-padding>operator</label>
+        <md-select data-ng-model="calcCtrl.operator">
+          <md-option data-ng-repeat="(symb, operator) in calcCtrl.operators" data-ng-value="{{operator}}">
+            {{operator.symb}} {{operator.name}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </md-content>
+  </md-backdrop> -->
+</div>
