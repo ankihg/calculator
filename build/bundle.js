@@ -49,6 +49,7 @@
 
 	const app = angular.module('CalculatorApp', []);
 	__webpack_require__(3)(app);
+	__webpack_require__(5)(app);
 
 
 /***/ },
@@ -31539,12 +31540,59 @@
 
 /***/ },
 /* 3 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	module.exports = (app) => {
-	  app.controller('CalcController', [function() {
+	  __webpack_require__(4)(app);
+	}
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	'use strict';
+	module.exports = (app) => {
+	  app.factory('CalcService', ['$http', function($http) {
+
+	    this.getOperators = function(next) {
+	      $http.get('/operators')
+	        .then(res => next(res.data.data))
+	        .catch(err => console.log(err))
+	    }
+
+	    return this;
+
+	  }])
+	}
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = (app) => {
+	  __webpack_require__(6)(app);
+	}
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	'use strict';
+	module.exports = (app) => {
+	  app.controller('CalcController', ['CalcService', function(CalcService) {
 
 	    this.plz = 'lets do some math !!';
+	    this.operators = null;
+
+	    this.init = function() {
+	      CalcService.getOperators((operators) => {
+	        this.operators = operators;
+	        console.log(this.operators);
+	      });
+	    }
 
 	  }]);
 	}
