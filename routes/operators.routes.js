@@ -3,7 +3,7 @@ module.exports = (router, models) => {
 
   router.route('/operators')
     .get((req, res) => {
-      res.json({msg: 'all operators', data: models.operators});
+      res.status(200).json({msg: 'all operators', data: models.operators});
     });
 
 }

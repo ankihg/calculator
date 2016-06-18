@@ -72,6 +72,30 @@ describe('routes testing', () => {
         })
     })
 
+    it('insufficient operands: cannot multiple letters', (done) => {
+      request(server)
+        .post(path)
+        .send({"operator": "*", "operand1": "h", "operand2": "g"})
+        .end((err, res) => {
+          expect(err).not.eql(null);
+          expect  (res.body).property('err');
+          expect(res.body.msg).eql('insufficient operands; cannot calculate');
+          done();
+        })
+    })
+
+    it('insufficient operator: cannot operate "plz"', (done) => {
+      request(server)
+        .post(path)
+        .send({"operator": "plz", "operand1": 1, "operand2": 2})
+        .end((err, res) => {
+          expect(err).not.eql(null);
+          expect  (res.body).property('err');
+          expect(res.body.msg).eql('insufficient operator; cannot calculate');
+          done();
+        })
+    })
+
 
   })
 
