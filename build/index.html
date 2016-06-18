@@ -2,9 +2,15 @@
   <head>
     <meta char="utf-8">
   </head>
-  <body>
+  <body data-ng-app="CalculatorApp">
     <h1>plz respond</h1>
     <h5>welcome to the frontend</h5>
+
+      <main data-ng-controller="CalcController as calcCtrl">
+
+        <h1>{{calcCtrl.plz}}</h1>
+
+      </main>
 
     <script src="bundle.js"></script>
   </body>

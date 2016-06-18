@@ -44,7 +44,11 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
 	const angular = __webpack_require__(1);
+
+	const app = angular.module('CalculatorApp', []);
+	__webpack_require__(3)(app);
 
 
 /***/ },
@@ -31532,6 +31536,19 @@
 	})(window);
 
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = (app) => {
+	  app.controller('CalcController', [function() {
+
+	    this.plz = 'lets do some math !!';
+
+	  }]);
+	}
+
 
 /***/ }
 /******/ ]);
