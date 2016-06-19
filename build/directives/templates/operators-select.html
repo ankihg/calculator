@@ -1,6 +1,5 @@
-<div data-ng-init="calcCtrl.init()">
+<div id="operators-select" data-ng-init="calcCtrl.init()">
 
-  operator:
   <select data-ng-model="calcCtrl.equation.operator">
     <option data-ng-repeat="(symb, operator) in calcCtrl.operators" value="{{operator.symb}}">
       ({{operator.symb}}) {{operator.name}}

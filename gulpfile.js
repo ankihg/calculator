@@ -5,7 +5,8 @@ const gulp = require('gulp'),
 
   const sources = {
     js: __dirname + '/src/index.js',
-    html: __dirname + '/src/**/*.html'
+    html: __dirname + '/src/**/*.html',
+    css: __dirname + '/src/styles/**/*.css'
   }
 
 const dests = {
@@ -23,4 +24,9 @@ gulp.task('copyHtml', () => {
     .pipe(gulp.dest(dests.build));
 })
 
-gulp.task('default', ['bundle:dev', 'copyHtml']);
+gulp.task('copyCss', () => {
+  return gulp.src(sources.css)
+    .pipe(gulp.dest(dests.build+'/styles'));
+})
+
+gulp.task('default', ['bundle:dev', 'copyHtml', 'copyCss']);

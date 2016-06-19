@@ -1,10 +1,7 @@
 <div>
-  <input data-ng-model="calcCtrl.equation.operand1" placeholder="operand1">
-  <br/>
+  <input data-ng-model="calcCtrl.equation.operand1" class="operand-input" placeholder="operand1">
   <operators-select />
-  <br/>
-  <input data-ng-model="calcCtrl.equation.operand2" placeholder="operand2">
-  <button data-ng-click="calcCtrl.calculate()">calc!</button>
-  <br/>
+  <input data-ng-model="calcCtrl.equation.operand2" class="operand-input" placeholder="operand2">
+  <button data-ng-click="calcCtrl.calculate()">calculate</button>
   <h1> = {{calcCtrl.equation.res}}</h1>
 </div>
