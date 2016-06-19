@@ -4,7 +4,7 @@ module.exports = (app) => {
 
     var vm = this;
 
-    vm.plz = 'lets do some math !!';
+    vm.greeting = 'lets do some math !!';
     vm.operators = null;
 
     vm.equation = {

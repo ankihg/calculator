@@ -4,7 +4,8 @@ module.exports = (app) => {
 
     this.getOperators = function(next) {
       $http.get('/operators')
-        .then(res => next(res.data.data))
+        .then(res => {
+          next(res.data.data)})
         .catch(err => console.log(err));
     }
 

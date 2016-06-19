@@ -45,22 +45,49 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	var angular = __webpack_require__(2);
+	const angular = __webpack_require__(2);
 	__webpack_require__(20);
 
 	describe('client-side testing', () => {
 
-	  let calcCtrl;
 
-	  beforeEach(angular.mock.module('CalculatorApp'));
-	  beforeEach(angular.mock.inject(function($controller) {
-	    calcCtrl = $controller('CalcController');
-	  }));
+	  describe('calcCtrl testing', () => {
+	    let calcCtrl;
 
-	  it('do a test', () => {
-	    expect(false).toBe(true);
+	    beforeEach(angular.mock.module('CalculatorApp'));
+	    beforeEach(angular.mock.inject(function($controller) {
+	      calcCtrl = $controller('CalcController');
+	    }));
+
+	    it('have greeting', () => {
+	      expect(calcCtrl.greeting).toEqual('lets do some math !!')
+	    })
+
+	    describe('REST testing', () => {
+
+	      let $httpBackend
+
+	      beforeEach(angular.mock.inject(function(_$httpBackend_) {
+	        $httpBackend = _$httpBackend_;
+	      }));
+
+	      it('get all operators', () => {
+	        $httpBackend.expectGET('/operators')
+	          .respond(200, {msg: 'all operators', data: {
+	              '+': {symb: '+', name:'add'},
+	              '-': {symb: '-', name:'sub'}
+	            }});
+	        calcCtrl.init();
+	        $httpBackend.flush();
+
+	        expect(calcCtrl.operators['+']).toEqual({symb: '+', name:'add'})
+	        expect(calcCtrl.operators['-']).toEqual({symb: '-', name:'sub'})
+	      })
+
+
+	    })
+
 	  })
-
 
 	})
 
@@ -66872,7 +66899,8 @@
 
 	    this.getOperators = function(next) {
 	      $http.get('/operators')
-	        .then(res => next(res.data.data))
+	        .then(res => {
+	          next(res.data.data)})
 	        .catch(err => console.log(err));
 	    }
 
@@ -66907,7 +66935,7 @@
 
 	    var vm = this;
 
-	    vm.plz = 'lets do some math !!';
+	    vm.greeting = 'lets do some math !!';
 	    vm.operators = null;
 
 	    vm.equation = {
