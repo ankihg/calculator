@@ -28,7 +28,8 @@ module.exports = (app) => {
       console.log(vm.equation);
       CalcService.postCalcuation(vm.equation, (res) => {
         vm.equation.res = res;
-        vm.calculationsStack.unshift(vm.equation.res)
+        vm.calculationsStack.unshift(vm.equation);
+        vm.equation = null;
       })
     }
 

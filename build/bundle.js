@@ -66906,7 +66906,8 @@
 	      console.log(vm.equation);
 	      CalcService.postCalcuation(vm.equation, (res) => {
 	        vm.equation.res = res;
-	        vm.calculationsStack.unshift(vm.equation.res)
+	        vm.calculationsStack.unshift(vm.equation);
+	        vm.equation = null;
 	      })
 	    }
 
@@ -66971,8 +66972,6 @@
 	      restrict: 'E',
 	      replace: true,
 	      templateUrl: './directives/templates/calculations-stack.html'
-	      // controller: 'CalcController',
-	      // controllerAs: 'calcCtrl'
 	    }
 	  })
 	}
