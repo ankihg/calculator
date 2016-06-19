@@ -57,6 +57,10 @@ describe('models unit testing', () => {
     it('6 / 3 = 2', () => {
       expect(new Calculation({operator: operators['/'], operand1: 6, operand2:3}).apply()).eql(2);
     })
+
+    it('division by 0', () => {
+      expect(new Calculation({operator: operators['/'], operand1: 6, operand2:0}).apply()).eql(Infinity);
+    })
   })
 
 })

@@ -19,13 +19,10 @@ module.exports = (app) => {
     vm.init = function() {
       CalcService.getOperators((operators) => {
         this.operators = operators;
-        console.log(this.operators);
       });
     }
 
     vm.calculate = function() {
-      console.log('calculate');
-      console.log(vm.equation);
       CalcService.postCalcuation(vm.equation, (res) => {
         vm.equation.res = res;
         vm.calculationsStack.unshift(vm.equation);
