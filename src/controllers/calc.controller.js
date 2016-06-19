@@ -14,6 +14,8 @@ module.exports = (app) => {
       res: null
     }
 
+    vm.calculationsStack = [];
+
     vm.init = function() {
       CalcService.getOperators((operators) => {
         this.operators = operators;
@@ -22,10 +24,11 @@ module.exports = (app) => {
     }
 
     vm.calculate = function() {
+      console.log('calculate');
       console.log(vm.equation);
       CalcService.postCalcuation(vm.equation, (res) => {
-        console.log(res);
         vm.equation.res = res;
+        vm.calculationsStack.unshift(vm.equation.res)
       })
     }
 

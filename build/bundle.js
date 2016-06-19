@@ -66892,6 +66892,8 @@
 	      res: null
 	    }
 
+	    vm.calculationsStack = [];
+
 	    vm.init = function() {
 	      CalcService.getOperators((operators) => {
 	        this.operators = operators;
@@ -66900,10 +66902,11 @@
 	    }
 
 	    vm.calculate = function() {
+	      console.log('calculate');
 	      console.log(vm.equation);
 	      CalcService.postCalcuation(vm.equation, (res) => {
-	        console.log(res);
 	        vm.equation.res = res;
+	        vm.calculationsStack.unshift(vm.equation.res)
 	      })
 	    }
 
@@ -66920,6 +66923,7 @@
 	module.exports = (app) => {
 	  __webpack_require__(14)(app);
 	  __webpack_require__(15)(app);
+	  __webpack_require__(16)(app);
 	}
 
 
@@ -66950,6 +66954,23 @@
 	      restrict: 'E',
 	      replace: true,
 	      templateUrl: './directives/templates/equation-input.html'
+	      // controller: 'CalcController',
+	      // controllerAs: 'calcCtrl'
+	    }
+	  })
+	}
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	module.exports = (app) => {
+	  app.directive('calculationsStack', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/calculations-stack.html'
 	      // controller: 'CalcController',
 	      // controllerAs: 'calcCtrl'
 	    }
