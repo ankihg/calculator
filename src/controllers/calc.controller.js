@@ -10,7 +10,8 @@ module.exports = (app) => {
     vm.equation = {
       operator: null,
       operand1: null,
-      operand2: null
+      operand2: null,
+      res: null
     }
 
     vm.init = function() {
@@ -24,6 +25,7 @@ module.exports = (app) => {
       console.log(vm.equation);
       CalcService.postCalcuation(vm.equation, (res) => {
         console.log(res);
+        vm.equation.res = res;
       })
     }
 

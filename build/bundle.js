@@ -66888,7 +66888,8 @@
 	    vm.equation = {
 	      operator: null,
 	      operand1: null,
-	      operand2: null
+	      operand2: null,
+	      res: null
 	    }
 
 	    vm.init = function() {
@@ -66902,6 +66903,7 @@
 	      console.log(vm.equation);
 	      CalcService.postCalcuation(vm.equation, (res) => {
 	        console.log(res);
+	        vm.equation.res = res;
 	      })
 	    }
 
