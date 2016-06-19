@@ -1,7 +1,11 @@
+.equation-input {
+  /*text-align: center;*/
+}
+
 .operand-input {
   display: inline;
 }
 
-#operators-select {
+.operators-select {
   display: inline;
 }

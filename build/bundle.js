@@ -66925,6 +66925,8 @@
 	  __webpack_require__(14)(app);
 	  __webpack_require__(15)(app);
 	  __webpack_require__(16)(app);
+	  __webpack_require__(17)(app);
+	  __webpack_require__(18)(app);
 	}
 
 
@@ -66972,6 +66974,36 @@
 	      restrict: 'E',
 	      replace: true,
 	      templateUrl: './directives/templates/calculations-stack.html'
+	    }
+	  })
+	}
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	module.exports = (app) => {
+	  app.directive('calculation', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/calculation.html'
+	    }
+	  })
+	}
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	module.exports = (app) => {
+	  app.directive('calculator', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/calculator.html'
 	    }
 	  })
 	}

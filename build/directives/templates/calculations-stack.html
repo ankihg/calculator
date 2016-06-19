@@ -1,8 +1,7 @@
 <md-list>
-  i am calc stack
-  <md-list-item class="md-2-line" ng-repeat="calculation in calcCtrl.calculationsStack">
+  <md-list-item class="md-2-line" data-ng-repeat="calculation in calcCtrl.calculationsStack">
     <div class="md-list-item-text">
-      <p>{{calculation.operand1}} {{calculation.operator}} {{calculation.operand2}} = {{calculation.res}}</p>
+      <calculation calculation="{{calculation}}"></calculation>
     </div>
   </md-list-item>
 </md-list>
