@@ -1,7 +1,9 @@
 .calculator {
-  /*width: 70%;*/
-  margin: auto;
+  width: 50%;
   text-align: center;
+  background-color: #80A485;
+  border: 5px solid #DABFFF;
+  margin: 5% auto 5% auto;
 }
 
 .calculation {

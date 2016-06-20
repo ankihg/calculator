@@ -1,7 +1,9 @@
-<md-list>
-  <md-list-item class="md-2-line" data-ng-repeat="calculation in calcCtrl.calculationsStack">
-    <div class="md-list-item-text">
-      <calculation calculation="{{calculation}}"></calculation>
-    </div>
-  </md-list-item>
-</md-list>
+<div class="calculations-stack">
+  <md-list>
+    <md-list-item class="md-2-line" data-ng-repeat="calculation in calcCtrl.calculationsStack">
+      <div class="md-list-item-text">
+        <calculation calculation="{{calculation}}"></calculation>
+      </div>
+    </md-list-item>
+  </md-list>
+</div>

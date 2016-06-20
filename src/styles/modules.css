@@ -1,0 +1,38 @@
+.calculator {
+  width: 50%;
+  text-align: center;
+  background-color: #80A485;
+  border: 5px solid #DABFFF;
+  margin: 5% auto 5% auto;
+}
+
+.calculations-stack {
+  min-height: 20px;
+  max-height: 400px;
+  overflow-y: scroll;
+  width: 80%;
+  margin: 2% auto 2% auto;
+  background-color: #DABFFF;
+}
+
+
+.calculation {
+  background-color: #DABFFF;
+  text-align: center;
+  margin: auto;
+}
+
+.operand-input {
+  display: inline;
+}
+
+.operators-select {
+  display: inline;
+}
+
+hr {
+  width: 70%;
+  color: #80A485;
+  background-color: #80A485;
+  height: 1px;
+}

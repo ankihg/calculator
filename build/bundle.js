@@ -66847,7 +66847,8 @@
 
 	    this.getOperators = function(next) {
 	      $http.get('/operators')
-	        .then(res => next(res.data.data))
+	        .then(res => {
+	          next(res.data.data)})
 	        .catch(err => console.log(err));
 	    }
 
@@ -66882,7 +66883,7 @@
 
 	    var vm = this;
 
-	    vm.plz = 'lets do some math !!';
+	    vm.greeting = 'lets do some math !!';
 	    vm.operators = null;
 
 	    vm.equation = {
