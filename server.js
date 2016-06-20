@@ -7,8 +7,7 @@ const express = require('express'),
 
 // middleware
 app.use(require('body-parser').json());
-app.use(require('morgan')());
-
+// app.use(require('morgan')());
 
 //server
 const apiRouter = express.Router();
