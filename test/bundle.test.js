@@ -54,15 +54,15 @@
 	  describe('calcCtrl testing', () => {
 	    let calcCtrl;
 
-	    //mock the app
+	    // mock the app
 	    beforeEach(angular.mock.module('CalculatorApp'));
 
-	    //inject the conroller
+	    // inject the conroller
 	    beforeEach(angular.mock.inject(function($controller) {
 	      calcCtrl = $controller('CalcController');
 	    }));
 
-	    //calcCtrl has greeting
+	    // calcCtrl has greeting
 	    it('have greeting', () => {
 	      expect(calcCtrl.greeting).toEqual('lets do some math !!')
 	    })
@@ -72,21 +72,21 @@
 
 	      let $httpBackend
 
-	      //inject $httpBackend for mock calls
+	      // inject $httpBackend for mock calls
 	      beforeEach(angular.mock.inject(function(_$httpBackend_) {
 	        $httpBackend = _$httpBackend_;
 	      }));
 
 
 	      it('get all operators', () => {
-	        //mock get to operators response
+	        // mock get to operators response
 	        $httpBackend.expectGET('/operators')
 	          .respond(200, {msg: 'all operators', data: {
 	              '+': {symb: '+', name:'add'},
 	              '-': {symb: '-', name:'sub'}
 	            }});
 
-	        //mock get to operators
+	        // mock get to operators
 	        calcCtrl.init();
 	        $httpBackend.flush();
 
@@ -97,7 +97,7 @@
 
 
 	      it('post to calculate', () => {
-	        //mock post to calculate response
+	        // mock post to calculate response
 	        $httpBackend.expectPOST('/calculate')
 	          .respond(200, {msg: '1 + 2 calculated', data: '3'});
 
@@ -108,11 +108,11 @@
 	          operand2: 2
 	        }
 
-	        //mock post to calculate
+	        // mock post to calculate
 	        calcCtrl.calculate();
 	        $httpBackend.flush();
 
-	        //calcCtrl.equation should be reset
+	        // calcCtrl.equation should be reset
 	        expect(calcCtrl.equation).toEqual(null);
 
 	        // new calculation at top of calcCtrl.calculationsStack
@@ -142,7 +142,7 @@
 	          operand2: '5'
 	        }
 
-	        //mock post to calculate
+	        // mock post to calculate
 	        calcCtrl.calculate();
 	        $httpBackend.flush();
 
