@@ -6,6 +6,17 @@
   margin: 5% auto 5% auto;
 }
 
+#about-me {
+  background-color: #DABFFF;
+  margin: 0 auto 5% auto;
+  text-align: center;
+  padding: 1%;
+  line-height: 50%;
+}
+#name {
+  font-size: 300%;
+}
+
 .calculations-stack {
   min-height: 20px;
   max-height: 400px;

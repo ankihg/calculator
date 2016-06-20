@@ -66925,6 +66925,8 @@
 	  __webpack_require__(16)(app);
 	  __webpack_require__(17)(app);
 	  __webpack_require__(18)(app);
+	  __webpack_require__(19)(app);
+
 	}
 
 
@@ -67002,6 +67004,21 @@
 	      restrict: 'E',
 	      replace: true,
 	      templateUrl: './directives/templates/calculator.html'
+	    }
+	  })
+	}
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	module.exports = (app) => {
+	  app.directive('aboutMe', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/about-me.html'
 	    }
 	  })
 	}
