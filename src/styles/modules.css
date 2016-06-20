@@ -11,12 +11,15 @@
   margin: 0 auto 5% auto;
   text-align: center;
   padding: 1%;
+}
+#about-me #name {
+  font-size: 300%;
   line-height: 50%;
 }
-#name {
-  font-size: 300%;
+#about-me .links {
+  white-space:nowrap;
 }
-#about-me .link img {
+#about-me .links img {
   max-width: 2%;
   max-height: 2%;
   padding-left: 1%;
