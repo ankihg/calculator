@@ -7,7 +7,8 @@ const gulp = require('gulp'),
     js: __dirname + '/src/index.js',
     html: __dirname + '/src/**/*.html',
     css: __dirname + '/src/styles/**/*.css',
-    test: __dirname + '/test/client-spec.test.js'
+    test: __dirname + '/test/client-spec.test.js',
+    assets: __dirname + '/src/assets/**/*.*'
   }
 
 const dests = {
@@ -30,10 +31,15 @@ gulp.task('copyCss', () => {
     .pipe(gulp.dest(dests.build+'/styles'));
 })
 
+gulp.task('copyAssets', () => {
+  return gulp.src(sources.assets)
+    .pipe(gulp.dest(dests.build+'/assets'));
+})
+
 gulp.task('bundle:test', () => {
   return gulp.src(sources.test)
     .pipe(webpack({output: {filename: 'bundle.test.js'}}))
     .pipe(gulp.dest(__dirname+'/test'));
 })
 
-gulp.task('default', ['bundle:dev', 'copyHtml', 'copyCss']);
+gulp.task('default', ['bundle:dev', 'copyHtml', 'copyCss', 'copyAssets']);
