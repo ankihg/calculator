@@ -4,6 +4,6 @@ module.exports = (app) => {
   require('./calculations-stack.directive.js')(app);
   require('./calculation.directive.js')(app);
   require('./calculator.directive.js')(app);
+  require('./error-handler.directive.js')(app);
   require('./about-me.directive.js')(app);
-
 }

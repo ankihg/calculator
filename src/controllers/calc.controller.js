@@ -14,6 +14,8 @@ module.exports = (app) => {
       res: null
     }
 
+    vm.errMsg = null;
+
     vm.calculationsStack = [];
 
     vm.init = function() {
@@ -24,7 +26,10 @@ module.exports = (app) => {
 
     vm.calculate = function() {
       CalcService.postCalcuation(vm.equation, (res) => {
-        vm.equation.res = res;
+        if (res.err) return vm.errMsg = res.msg;
+
+        vm.errMsg = null;
+        vm.equation.res = res.data;
         vm.calculationsStack.unshift(vm.equation);
         vm.equation = null;
       })

@@ -11,8 +11,8 @@ module.exports = (app) => {
 
     this.postCalcuation = function(equation, next) {
       $http.post('/calculate', equation)
-        .then(res => next(res.data.data))
-        .catch(err => console.log(err));
+        .then(res => next(res.data))
+        .catch(err =>  next(err.data));
     }
 
     return this;

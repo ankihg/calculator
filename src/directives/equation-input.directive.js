@@ -4,8 +4,6 @@ module.exports = (app) => {
       restrict: 'E',
       replace: true,
       templateUrl: './directives/templates/equation-input.html'
-      // controller: 'CalcController',
-      // controllerAs: 'calcCtrl'
     }
   })
 }

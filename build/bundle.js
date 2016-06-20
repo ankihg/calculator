@@ -66854,8 +66854,8 @@
 
 	    this.postCalcuation = function(equation, next) {
 	      $http.post('/calculate', equation)
-	        .then(res => next(res.data.data))
-	        .catch(err => console.log(err));
+	        .then(res => next(res.data))
+	        .catch(err =>  next(err.data));
 	    }
 
 	    return this;
@@ -66893,6 +66893,8 @@
 	      res: null
 	    }
 
+	    vm.errMsg = null;
+
 	    vm.calculationsStack = [];
 
 	    vm.init = function() {
@@ -66903,7 +66905,10 @@
 
 	    vm.calculate = function() {
 	      CalcService.postCalcuation(vm.equation, (res) => {
-	        vm.equation.res = res;
+	        if (res.err) return vm.errMsg = res.msg;
+
+	        vm.errMsg = null;
+	        vm.equation.res = res.data;
 	        vm.calculationsStack.unshift(vm.equation);
 	        vm.equation = null;
 	      })
@@ -66926,7 +66931,7 @@
 	  __webpack_require__(17)(app);
 	  __webpack_require__(18)(app);
 	  __webpack_require__(19)(app);
-
+	  __webpack_require__(20)(app);
 	}
 
 
@@ -66957,8 +66962,6 @@
 	      restrict: 'E',
 	      replace: true,
 	      templateUrl: './directives/templates/equation-input.html'
-	      // controller: 'CalcController',
-	      // controllerAs: 'calcCtrl'
 	    }
 	  })
 	}
@@ -67011,6 +67014,21 @@
 
 /***/ },
 /* 19 */
+/***/ function(module, exports) {
+
+	module.exports = (app) => {
+	  app.directive('errorHandler', function() {
+	    return {
+	      restrict: 'E',
+	      replace: true,
+	      templateUrl: './directives/templates/error-handler.html'
+	    }
+	  })
+	}
+
+
+/***/ },
+/* 20 */
 /***/ function(module, exports) {
 
 	module.exports = (app) => {
