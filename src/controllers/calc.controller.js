@@ -35,6 +35,13 @@ module.exports = (app) => {
       })
     }
 
+    vm.copyToEquation = function(calculation) {
+      vm.equation = {};
+      vm.equation.operator = calculation.operator;
+      vm.equation.operand1 = calculation.operand1;
+      vm.equation.operand2 = calculation.operand2;
+    }
+
     return vm;
 
   }]);

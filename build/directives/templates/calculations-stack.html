@@ -2,7 +2,7 @@
   <md-list>
     <md-list-item class="md-2-line" data-ng-repeat="calculation in calcCtrl.calculationsStack">
       <div class="md-list-item-text">
-        <calculation calculation="{{calculation}}"></calculation>
+        <calculation calculation="{{calculation}}" data-ng-click="calcCtrl.copyToEquation(calculation)"></calculation>
       </div>
     </md-list-item>
   </md-list>
