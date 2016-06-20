@@ -38,6 +38,25 @@ describe('client-side testing', () => {
         expect(calcCtrl.operators['-']).toEqual({symb: '-', name:'sub'})
       })
 
+      it('post to calculate', () => {
+        $httpBackend.expectPOST('/calculate')
+          .respond(200, {msg: '1 + 2 calculated', data: '3'});
+        calcCtrl.equation = {
+          operand1: 1,
+          operator: '+',
+          operand2: 2
+        }
+        calcCtrl.calculate();
+        $httpBackend.flush();
+
+        expect(calcCtrl.equation).toEqual(null);
+
+        let lastCalc = calcCtrl.calculationsStack[0];
+        expect(lastCalc.operand1).toEqual(1);
+        expect(lastCalc.operator).toEqual('+');
+        expect(lastCalc.operand2).toEqual(2);
+        expect(lastCalc.res).toEqual('3');
+      })
 
     })
 
