@@ -1,7 +1,8 @@
 'use strict';
 const gulp = require('gulp'),
   webpack = require('webpack-stream'),
-  fs = require('fs');
+  fs = require('fs'),
+  path = require('path');
 
   const sources = {
     js: __dirname + '/src/index.js',
@@ -17,7 +18,18 @@ const dests = {
 
 gulp.task('bundle:dev', () => {
   return gulp.src(sources.js)
-    .pipe(webpack({output: {filename: 'bundle.js'}}))
+    .pipe(webpack({output: {filename: 'bundle.js'},
+        module: {
+          loaders: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'babel',
+            query: {
+              presets: ['es2015']
+            }
+            }]
+        }
+      }))
     .pipe(gulp.dest(dests.build));
 })
 

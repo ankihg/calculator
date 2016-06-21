@@ -4,11 +4,3 @@ body {
   min-height: 800px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
-@media (min-width: 500px) {
-  .calculator {
-    width: 100%;
-    background-color: blue;
-    margin: 10px 0 10px 0;
-  }
-}
