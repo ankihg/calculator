@@ -1,5 +1,5 @@
 .calculator {
-  width: 70%;
+  width: 80%;
   text-align: center;
   background-color: #80A485;
   border: 5px solid #DABFFF;
@@ -9,14 +9,17 @@
 .equation-input button {
   font-size: 20px;
   height: 50px;
+  margin: 0 1% 0 1%;
 }
 .operand-input {
   display: inline;
   font-size: 30px;
   width: 20%;
+  margin: 0 1% 0 1%;
 }
 .operators-select {
   display: inline;
+  margin: 0 1% 0 1%;
 }
 .operators-select select {
   font-size: 30px;

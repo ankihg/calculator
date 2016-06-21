@@ -4,7 +4,7 @@ module.exports = (app) => {
 
     var vm = this;
 
-    vm.greeting = 'Let\'s do some math!';
+    vm.greeting = 'Let\'s do math!';
 
     // will retrieve at initialization
     vm.operators = null;
