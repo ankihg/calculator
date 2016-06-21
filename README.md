@@ -15,10 +15,8 @@ an EAN stack app using
 ### additional
  * previous calculations stack
  * click to set equation input to previous calculation in stack
-
-### stretch goals
- * accumlate calculations mode
- * use result from previous calculations
+ * accumulate calculation mode
+ * responsive with media queries
 
 ## architecture
 
