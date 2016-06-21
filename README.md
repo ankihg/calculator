@@ -9,6 +9,7 @@ an EAN stack app using
  * input for two operands
  * calcuation button that posts equation to server to retrieve result of calculation
  * unit tests
+ * deployed to heroku
 
 ## architecture
 
