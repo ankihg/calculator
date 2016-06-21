@@ -62,3 +62,6 @@ The app is responsive and uses CCS3 media queries to ensure usablity on mobile d
 
 #### tests
 Karma-Jasmine is used for front-end testing of Angular.
+
+### design considerations
+Since this is a small scale app I could have used a fairly minimal file structure without sacrificing organization and readability.  However, I believe good file structure is key to seperation of concerns and code clarity and wanted to show my ability to maintain modularity as a code base grows.
