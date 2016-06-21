@@ -66883,7 +66883,7 @@
 
 	    var vm = this;
 
-	    vm.greeting = 'lets do some math !!';
+	    vm.greeting = 'Let\'s do some math!';
 	    vm.operators = null;
 
 	    vm.equation = {
@@ -66897,7 +66897,7 @@
 
 	    vm.calculationsStack = [];
 
-	    vm.init = function() {
+	    vm.getOperators = function() {
 	      CalcService.getOperators((operators) => {
 	        this.operators = operators;
 	      });
