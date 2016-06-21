@@ -8,7 +8,7 @@ const gulp = require('gulp'),
     js: __dirname + '/src/index.js',
     html: __dirname + '/src/**/*.html',
     css: __dirname + '/src/styles/**/*.css',
-    test: __dirname + '/test/client-spec.test.js',
+    test: __dirname + '/test/karma/client-spec.test.js',
     assets: __dirname + '/src/assets/**/*.*'
   }
 
@@ -51,7 +51,7 @@ gulp.task('copyAssets', () => {
 gulp.task('bundle:test', () => {
   return gulp.src(sources.test)
     .pipe(webpack({output: {filename: 'bundle.test.js'}}))
-    .pipe(gulp.dest(__dirname+'/test'));
+    .pipe(gulp.dest(__dirname+'/test/karma'));
 })
 
 gulp.task('default', ['bundle:dev', 'copyHtml', 'copyCss', 'copyAssets']);

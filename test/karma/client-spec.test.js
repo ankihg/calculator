@@ -1,4 +1,4 @@
-require('../build/bundle.js');
+require('../../build/bundle.js');
 const angular = require('angular');
 require('angular-mocks');
 
@@ -18,7 +18,7 @@ describe('client-side testing', () => {
 
     // calcCtrl has greeting
     it('have greeting', () => {
-      expect(calcCtrl.greeting).toEqual('lets do some math !!')
+      expect(calcCtrl.greeting).toEqual('Let\'s do math!')
     })
 
 
@@ -41,7 +41,7 @@ describe('client-side testing', () => {
             }});
 
         // mock get to operators
-        calcCtrl.init();
+        calcCtrl.getOperators();
         $httpBackend.flush();
 
         // ensure operators

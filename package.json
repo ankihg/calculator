@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha"
+    "test": "mocha test/mocha && karma start karma.conf.js"
   },
   "engines": {
     "node": "6.2.0"

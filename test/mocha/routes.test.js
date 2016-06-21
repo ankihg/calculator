@@ -1,6 +1,6 @@
 'use strict';
 const chai = require('chai'),
-  config = require(__dirname+'/../config');
+  config = require(__dirname+'/../../config');
 
 chai.use(require('chai-http'));
 const {expect, request} = chai;
@@ -42,7 +42,7 @@ describe('routes testing', () => {
         .end((err, res) => {
           expect(err).eql(null);
           expect(res.body.msg).eql('3 + 2 calculated');
-          expect(res.body.data).eql(5);
+          expect(res.body.data).eql('5');
           done();
         })
     })
@@ -54,7 +54,7 @@ describe('routes testing', () => {
         .end((err, res) => {
           expect(err).eql(null);
           expect(res.body.msg).eql('4 - 7 calculated');
-          expect(res.body.data).eql(-3);
+          expect(res.body.data).eql('-3');
           done();
         })
     })
@@ -66,7 +66,7 @@ describe('routes testing', () => {
         .end((err, res) => {
           expect(err).eql(null);
           expect(res.body.msg).eql('4 * 7 calculated');
-          expect(res.body.data).eql(28);
+          expect(res.body.data).eql('28');
           done();
         })
     })
@@ -78,7 +78,7 @@ describe('routes testing', () => {
         .end((err, res) => {
           expect(err).not.eql(null);
           expect  (res.body).property('err');
-          expect(res.body.msg).eql('insufficient operands; cannot calculate');
+          expect(res.body.msg).eql('insufficient operands');
           done();
         })
     })
@@ -90,7 +90,7 @@ describe('routes testing', () => {
         .end((err, res) => {
           expect(err).not.eql(null);
           expect  (res.body).property('err');
-          expect(res.body.msg).eql('insufficient operator; cannot calculate');
+          expect(res.body.msg).eql('insufficient operator');
           done();
         })
     })

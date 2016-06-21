@@ -3,7 +3,7 @@ const expect = require('chai').expect;
 
 describe('models unit testing', () => {
 
-  const models = require(__dirname+'/../models')(),
+  const models = require(__dirname+'/../../models')(),
     operators = models.operators,
     Calculation = models.Calculation;
 

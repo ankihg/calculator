@@ -64,7 +64,7 @@
 
 	    // calcCtrl has greeting
 	    it('have greeting', () => {
-	      expect(calcCtrl.greeting).toEqual('lets do some math !!')
+	      expect(calcCtrl.greeting).toEqual('Let\'s do math!')
 	    })
 
 
@@ -87,7 +87,7 @@
 	            }});
 
 	        // mock get to operators
-	        calcCtrl.init();
+	        calcCtrl.getOperators();
 	        $httpBackend.flush();
 
 	        // ensure operators
@@ -213,14 +213,14 @@
 	/***/ function(module, exports, __webpack_require__) {
 
 		'use strict';
-		const angular = __webpack_require__(1),
-		  ngMaterial = __webpack_require__(3);
 
-		const app = angular.module('CalculatorApp', [ngMaterial]);
+		var angular = __webpack_require__(1),
+		    ngMaterial = __webpack_require__(3);
+
+		var app = angular.module('CalculatorApp', [ngMaterial]);
 		__webpack_require__(9)(app);
 		__webpack_require__(11)(app);
 		__webpack_require__(13)(app);
-
 
 	/***/ },
 	/* 1 */
@@ -67000,99 +67000,136 @@
 	/* 9 */
 	/***/ function(module, exports, __webpack_require__) {
 
-		module.exports = (app) => {
-		  __webpack_require__(10)(app);
-		}
+		'use strict';
 
+		module.exports = function (app) {
+		  __webpack_require__(10)(app);
+		};
 
 	/***/ },
 	/* 10 */
 	/***/ function(module, exports) {
 
 		'use strict';
-		module.exports = (app) => {
-		  app.factory('CalcService', ['$http', function($http) {
 
-		    this.getOperators = function(next) {
-		      $http.get('/operators')
-		        .then(res => {
-		          next(res.data.data)})
-		        .catch(err => console.log(err));
-		    }
+		module.exports = function (app) {
+		  app.factory('CalcService', ['$http', function ($http) {
 
-		    this.postCalcuation = function(equation, next) {
-		      $http.post('/calculate', equation)
-		        .then(res => next(res.data))
-		        .catch(err =>  next(err.data));
-		    }
+		    this.getOperators = function (next) {
+		      $http.get('/operators').then(function (res) {
+		        next(res.data.data);
+		      }).catch(function (err) {
+		        return console.log(err);
+		      });
+		    };
+
+		    this.postCalcuation = function (equation, next) {
+		      $http.post('/calculate', equation).then(function (res) {
+		        return next(res.data);
+		      }).catch(function (err) {
+		        return next(err.data);
+		      });
+		    };
 
 		    return this;
-
-		  }])
-		}
-
+		  }]);
+		};
 
 	/***/ },
 	/* 11 */
 	/***/ function(module, exports, __webpack_require__) {
 
-		module.exports = (app) => {
-		  __webpack_require__(12)(app);
-		}
+		'use strict';
 
+		module.exports = function (app) {
+		  __webpack_require__(12)(app);
+		};
 
 	/***/ },
 	/* 12 */
 	/***/ function(module, exports) {
 
 		'use strict';
-		module.exports = (app) => {
-		  app.controller('CalcController', ['CalcService', function(CalcService) {
+
+		module.exports = function (app) {
+		  app.controller('CalcController', ['CalcService', function (CalcService) {
 
 		    var vm = this;
 
-		    vm.greeting = 'lets do some math !!';
+		    vm.greeting = 'Let\'s do math!';
+
+		    // will retrieve at initialization
 		    vm.operators = null;
 
+		    // equation input object
 		    vm.equation = {
 		      operator: null,
 		      operand1: null,
 		      operand2: null,
 		      res: null
-		    }
+		    };
 
+		    // invalid input notifications
 		    vm.errMsg = null;
 
+		    // previous calculations stack
 		    vm.calculationsStack = [];
 
-		    vm.init = function() {
-		      CalcService.getOperators((operators) => {
-		        this.operators = operators;
-		      });
-		    }
+		    vm.getOperators = function () {
+		      var _this = this;
 
-		    vm.calculate = function() {
-		      CalcService.postCalcuation(vm.equation, (res) => {
+		      CalcService.getOperators(function (operators) {
+		        _this.operators = operators;
+		      });
+		    };
+
+		    vm.calculate = function () {
+		      CalcService.postCalcuation(vm.equation, function (res) {
 		        if (res.err) return vm.errMsg = res.msg;
 
 		        vm.errMsg = null;
 		        vm.equation.res = res.data;
 		        vm.calculationsStack.unshift(vm.equation);
+
+		        // reset equation input
 		        vm.equation = null;
-		      })
-		    }
+		      });
+		    };
+
+		    vm.accumulate = function () {
+		      CalcService.postCalcuation(vm.equation, function (res) {
+		        if (res.err) return vm.errMsg = res.msg;
+
+		        vm.errMsg = null;
+		        vm.equation.res = res.data;
+		        vm.calculationsStack.unshift(vm.equation);
+
+		        // set equation input for calculation accumulation
+		        var operator = vm.equation.operator;
+		        vm.equation = {}; // reset equation input
+		        vm.equation.operand1 = parseFloat(res.data); // set operand1 to result of calculation
+		        vm.equation.operator = operator; // set to same operator
+		      });
+		    };
+
+		    vm.copyToEquation = function (calculation) {
+		      vm.equation = {};
+		      vm.equation.operator = calculation.operator;
+		      vm.equation.operand1 = calculation.operand1;
+		      vm.equation.operand2 = calculation.operand2;
+		    };
 
 		    return vm;
-
 		  }]);
-		}
-
+		};
 
 	/***/ },
 	/* 13 */
 	/***/ function(module, exports, __webpack_require__) {
 
-		module.exports = (app) => {
+		'use strict';
+
+		module.exports = function (app) {
 		  __webpack_require__(14)(app);
 		  __webpack_require__(15)(app);
 		  __webpack_require__(16)(app);
@@ -67100,115 +67137,121 @@
 		  __webpack_require__(18)(app);
 		  __webpack_require__(19)(app);
 		  __webpack_require__(20)(app);
-		}
-
+		};
 
 	/***/ },
 	/* 14 */
 	/***/ function(module, exports) {
 
-		module.exports = (app) => {
-		  app.directive('operatorsSelect', function() {
+		'use strict';
+
+		module.exports = function (app) {
+		  app.directive('operatorsSelect', function () {
 		    return {
 		      restrict: 'E',
 		      replace: true,
 		      templateUrl: './directives/templates/operators-select.html'
 		      // controller: 'CalcController',
 		      // controllerAs: 'calcCtrl'
-		    }
-		  })
-		}
-
+		    };
+		  });
+		};
 
 	/***/ },
 	/* 15 */
 	/***/ function(module, exports) {
 
-		module.exports = (app) => {
-		  app.directive('equationInput', function() {
+		'use strict';
+
+		module.exports = function (app) {
+		  app.directive('equationInput', function () {
 		    return {
 		      restrict: 'E',
 		      replace: true,
 		      templateUrl: './directives/templates/equation-input.html'
-		    }
-		  })
-		}
-
+		    };
+		  });
+		};
 
 	/***/ },
 	/* 16 */
 	/***/ function(module, exports) {
 
-		module.exports = (app) => {
-		  app.directive('calculationsStack', function() {
+		'use strict';
+
+		module.exports = function (app) {
+		  app.directive('calculationsStack', function () {
 		    return {
 		      restrict: 'E',
 		      replace: true,
 		      templateUrl: './directives/templates/calculations-stack.html'
-		    }
-		  })
-		}
-
+		    };
+		  });
+		};
 
 	/***/ },
 	/* 17 */
 	/***/ function(module, exports) {
 
-		module.exports = (app) => {
-		  app.directive('calculation', function() {
+		'use strict';
+
+		module.exports = function (app) {
+		  app.directive('calculation', function () {
 		    return {
 		      restrict: 'E',
 		      replace: true,
 		      templateUrl: './directives/templates/calculation.html'
-		    }
-		  })
-		}
-
+		    };
+		  });
+		};
 
 	/***/ },
 	/* 18 */
 	/***/ function(module, exports) {
 
-		module.exports = (app) => {
-		  app.directive('calculator', function() {
+		'use strict';
+
+		module.exports = function (app) {
+		  app.directive('calculator', function () {
 		    return {
 		      restrict: 'E',
 		      replace: true,
 		      templateUrl: './directives/templates/calculator.html'
-		    }
-		  })
-		}
-
+		    };
+		  });
+		};
 
 	/***/ },
 	/* 19 */
 	/***/ function(module, exports) {
 
-		module.exports = (app) => {
-		  app.directive('errorHandler', function() {
+		'use strict';
+
+		module.exports = function (app) {
+		  app.directive('errorHandler', function () {
 		    return {
 		      restrict: 'E',
 		      replace: true,
 		      templateUrl: './directives/templates/error-handler.html'
-		    }
-		  })
-		}
-
+		    };
+		  });
+		};
 
 	/***/ },
 	/* 20 */
 	/***/ function(module, exports) {
 
-		module.exports = (app) => {
-		  app.directive('aboutMe', function() {
+		'use strict';
+
+		module.exports = function (app) {
+		  app.directive('aboutMe', function () {
 		    return {
 		      restrict: 'E',
 		      replace: true,
 		      templateUrl: './directives/templates/about-me.html'
-		    }
-		  })
-		}
-
+		    };
+		  });
+		};
 
 	/***/ }
 	/******/ ]);
