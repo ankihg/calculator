@@ -60,5 +60,5 @@ Front-end code is written using ES6 features and is transpiled with Babel to ens
 
 The app is responsive and uses CCS3 media queries to ensure usablity on mobile devices and small screens.
 
-####
+#### tests
 Karma-Jasmine is used for front-end testing of Angular.
