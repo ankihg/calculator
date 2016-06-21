@@ -14,7 +14,7 @@ an EAN stack app using
 
 ### additional
  * previous calculations stack
-
+ * set equation input to previous calculation in stack
 
 ## architecture
 
