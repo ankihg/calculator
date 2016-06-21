@@ -70,4 +70,4 @@ Express Routers are used to seperate front-end and back-end routes since they ar
 
 I enjoy the style of dependency injection for including dependent objects like routes and Angular features. The design pattern reduces redundent dependency inclusions and makes objects more easily configurable. 
 
-Direct further design questions to hagelin.annika@gmail.com
+Direct any design questions to hagelin.annika@gmail.com
