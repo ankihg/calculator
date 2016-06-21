@@ -4,12 +4,17 @@ an EAN stack app using
   * Express - routing
   * Angular - front-end framework
 
-## mvp
+## features
+### mvp
  * drop down menu to select operators retrieved from server
  * input for two operands
  * calcuation button that posts equation to server to retrieve result of calculation
  * unit tests
  * deployed to heroku
+
+### additional
+ * previous calculations stack
+
 
 ## architecture
 
