@@ -69,3 +69,5 @@ As this is a small scale app, a fairly minimal file structure could have been us
 Express Routers are used to seperate front-end and back-end routes since they are being served by the same server. The Router allows easy mounting of back-end routes to `/api`.
 
 I enjoy the style of dependency injection for including dependent objects like routes and Angular features. The design pattern reduces redundent dependency inclusions and makes objects more easily configurable. 
+
+Feel free to direct further design questions to hagelin.annika@gmail.com
