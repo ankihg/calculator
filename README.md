@@ -66,4 +66,6 @@ Karma-Jasmine is used for front-end testing of Angular.
 ### Design considerations
 As this is a small scale app, a fairly minimal file structure could have been used without sacrificing organization and readability.  However, I believe file structure is key to code clarity and seperation of concerns and want to show my ability to maintain modularity as a code base grows.
 
+I use Express Routers to seperate front-end and back-end since they are being served by the same server. The Router allows easy mounting of back-end routes to `/api`.
+
 I enjoy the style of dependency injection for including dependent objects like routes and Angular features. The design pattern reduces redundent dependency inclusions and makes objects more easily configurable. 
