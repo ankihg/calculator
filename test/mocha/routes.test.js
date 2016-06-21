@@ -12,7 +12,7 @@ describe('routes testing', () => {
 
   describe('operators routes testing', () => {
 
-    const path = '/operators';
+    const path = '/api/operators';
 
     it('get all', (done) => {
       request(server)
@@ -33,7 +33,7 @@ describe('routes testing', () => {
 
   describe('calculate routes testing', () => {
 
-    const path = '/calculate';
+    const path = '/api/calculate';
 
     it('post calculate 3 + 2', (done) => {
       request(server)

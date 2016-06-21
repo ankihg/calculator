@@ -66848,7 +66848,7 @@
 	  app.factory('CalcService', ['$http', function ($http) {
 
 	    this.getOperators = function (next) {
-	      $http.get('/operators').then(function (res) {
+	      $http.get('/api/operators').then(function (res) {
 	        next(res.data.data);
 	      }).catch(function (err) {
 	        return console.log(err);
@@ -66856,7 +66856,7 @@
 	    };
 
 	    this.postCalcuation = function (equation, next) {
-	      $http.post('/calculate', equation).then(function (res) {
+	      $http.post('/api/calculate', equation).then(function (res) {
 	        return next(res.data);
 	      }).catch(function (err) {
 	        return next(err.data);

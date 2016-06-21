@@ -12,7 +12,7 @@ app.use(require('body-parser').json());
 //server
 const apiRouter = express.Router();
 routesInjector(apiRouter, models);
-app.use(apiRouter);
+app.use('/api', apiRouter);
 
 
 //client

@@ -80,7 +80,7 @@
 
 	      it('get all operators', () => {
 	        // mock get to operators response
-	        $httpBackend.expectGET('/operators')
+	        $httpBackend.expectGET('/api/operators')
 	          .respond(200, {msg: 'all operators', data: {
 	              '+': {symb: '+', name:'add'},
 	              '-': {symb: '-', name:'sub'}
@@ -98,7 +98,7 @@
 
 	      it('post to calculate', () => {
 	        // mock post to calculate response
-	        $httpBackend.expectPOST('/calculate')
+	        $httpBackend.expectPOST('/api/calculate')
 	          .respond(200, {msg: '1 + 2 calculated', data: '3'});
 
 	        // mock equation to calculate
@@ -132,7 +132,7 @@
 	        let calcStackLength = calcCtrl.calculationsStack.length;
 
 	        // mock post to calculate response
-	        $httpBackend.expectPOST('/calculate')
+	        $httpBackend.expectPOST('/api/calculate')
 	          .respond(200, {msg: 'insufficient operands', err: new Error('insufficient operands')});
 
 	        // mock equation to calculate
@@ -67016,7 +67016,7 @@
 		  app.factory('CalcService', ['$http', function ($http) {
 
 		    this.getOperators = function (next) {
-		      $http.get('/operators').then(function (res) {
+		      $http.get('/api/operators').then(function (res) {
 		        next(res.data.data);
 		      }).catch(function (err) {
 		        return console.log(err);
@@ -67024,7 +67024,7 @@
 		    };
 
 		    this.postCalcuation = function (equation, next) {
-		      $http.post('/calculate', equation).then(function (res) {
+		      $http.post('/api/calculate', equation).then(function (res) {
 		        return next(res.data);
 		      }).catch(function (err) {
 		        return next(err.data);

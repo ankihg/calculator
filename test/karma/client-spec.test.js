@@ -34,7 +34,7 @@ describe('client-side testing', () => {
 
       it('get all operators', () => {
         // mock get to operators response
-        $httpBackend.expectGET('/operators')
+        $httpBackend.expectGET('/api/operators')
           .respond(200, {msg: 'all operators', data: {
               '+': {symb: '+', name:'add'},
               '-': {symb: '-', name:'sub'}
@@ -52,7 +52,7 @@ describe('client-side testing', () => {
 
       it('post to calculate', () => {
         // mock post to calculate response
-        $httpBackend.expectPOST('/calculate')
+        $httpBackend.expectPOST('/api/calculate')
           .respond(200, {msg: '1 + 2 calculated', data: '3'});
 
         // mock equation to calculate
@@ -86,7 +86,7 @@ describe('client-side testing', () => {
         let calcStackLength = calcCtrl.calculationsStack.length;
 
         // mock post to calculate response
-        $httpBackend.expectPOST('/calculate')
+        $httpBackend.expectPOST('/api/calculate')
           .respond(200, {msg: 'insufficient operands', err: new Error('insufficient operands')});
 
         // mock equation to calculate
