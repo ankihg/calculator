@@ -31,11 +31,11 @@ module.exports = (app) => {
 
     vm.calculate = function() {
       CalcService.postCalcuation(vm.equation, (res) => {
-        if (res.err) return vm.errMsg = res.msg;
+        if (res.err) return vm.errMsg = res.msg;  // display error message and return
 
-        vm.errMsg = null;
-        vm.equation.res = res.data;
-        vm.calculationsStack.unshift(vm.equation);
+        vm.errMsg = null; // no error
+        vm.equation.res = res.data; // save result to equation
+        vm.calculationsStack.unshift(vm.equation); // push equation to previous calculations stack
 
         // reset equation input
         vm.equation = null;
@@ -44,11 +44,12 @@ module.exports = (app) => {
 
     vm.accumulate = function() {
       CalcService.postCalcuation(vm.equation, (res) => {
-        if (res.err) return vm.errMsg = res.msg;
+        if (res.err) return vm.errMsg = res.msg; // display error message and return
 
-        vm.errMsg = null;
-        vm.equation.res = res.data;
-        vm.calculationsStack.unshift(vm.equation);
+        vm.errMsg = null; // no error
+        vm.equation.res = res.data; // save result to equation
+        vm.calculationsStack.unshift(vm.equation); // push equation to previous calculations stack
+
 
         // set equation input for calculation accumulation
         var operator = vm.equation.operator;
@@ -59,6 +60,7 @@ module.exports = (app) => {
     }
 
     vm.copyToEquation = function(calculation) {
+      // shallow copy; dont want pass by reference
       vm.equation = {};
       vm.equation.operator = calculation.operator;
       vm.equation.operand1 = calculation.operand1;
