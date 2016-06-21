@@ -66932,7 +66932,7 @@
 	        // set equation input for calculation accumulation
 	        let operator = vm.equation.operator;
 	        vm.equation = {}; // reset equation input
-	        vm.equation.operand1 = res.data; // set operand1 to result of calculation
+	        vm.equation.operand1 = parseFloat(res.data); // set operand1 to result of calculation
 	        vm.equation.operator = operator; // set to same operator
 	      })
 	    }

@@ -6,6 +6,24 @@
   margin: 5% auto 5% auto;
 }
 
+.equation-input button {
+  font-size: 20px;
+  height: 50px;
+}
+.operand-input {
+  display: inline;
+  font-size: 30px;
+  width: 20%;
+}
+.operators-select {
+  display: inline;
+}
+.operators-select select {
+  font-size: 30px;
+}
+
+
+
 #about-me {
   background-color: #DABFFF;
   margin: 0 auto 5% auto;
@@ -32,6 +50,7 @@
   width: 80%;
   margin: 2% auto 2% auto;
   background-color: #DABFFF;
+  font-size: 120%;
 }
 
 
@@ -41,13 +60,6 @@
   margin: auto;
 }
 
-.operand-input {
-  display: inline;
-}
-
-.operators-select {
-  display: inline;
-}
 
 .calculation hr {
   width: 70%;
