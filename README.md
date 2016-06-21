@@ -3,6 +3,8 @@ an EAN stack app using
   * Node - server runtime environment
   * Express - routing
   * Angular - front-end framework
+ 
+[Visit the app on Heroku](http://calculator-ankihg.herokuapp.com/)
 
 ## features
 ### mvp
@@ -37,6 +39,9 @@ method | path | body | action
 GET | /operators | | get all operators
 POST | /calculate | {operator: '+', operand1: 5, operand2: 3} | calculate an equation
 
+#### tests
+Mocha is used as a testing framework for the back-end in collaboration with Chai assertion library and Chai HTTP for routes testing.
+
 ### client
 #### equation input
  * an input for each operand
@@ -55,3 +60,5 @@ Front-end code is written using ES6 features and is transpiled with Babel to ens
 
 The app is responsive and uses CCS3 media queries to ensure usablity on mobile devices and small screens.
 
+####
+Karma-Jasmine is used for front-end testing of Angular.
