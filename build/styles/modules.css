@@ -24,6 +24,9 @@
 .operators-select select {
   font-size: 30px;
 }
+.equation-input #calc-buttons {
+  white-space:nowrap;
+}
 
 
 
