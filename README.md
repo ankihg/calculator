@@ -14,7 +14,7 @@ an EAN stack app using
 
 ### additional
  * previous calculations stack
- * set equation input to previous calculation in stack
+ * click to set equation input to previous calculation in stack
 
 ## architecture
 
@@ -34,3 +34,16 @@ method | path | body | action
 --- | --- | --- | ---
 GET | /operators | | get all operators
 POST | /calculate | {operator: '+', operand1: 5, operand2: 3} | calculate an equation
+
+### client
+#### equation input
+ * an input for each operand
+ * select for operators; retrieves operators from server on initialization
+ * calculate button thats posts equation to server
+
+#### previous calculations stack
+ * previous calculations dipslayed through Angular Material list with most recent at top
+ * clicks on calculations set clicked calculation as current equation input
+
+#### error handler
+ * displays when an error is received from the server due to invalid input
