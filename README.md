@@ -49,3 +49,9 @@ POST | /calculate | {operator: '+', operand1: 5, operand2: 3} | calculate an equ
 
 #### error handler
  * displays when an error is received from server due to invalid equation input
+
+#### browser and device compatibility
+Front-end code is written using ES6 features and is transpiled with Babel to ensure compatibilty with major browsers including Safari and Firefox.
+
+The app is responsive and uses CCS3 media queries to ensure usablity on mobile devices and small screens.
+
